@@ -1,0 +1,53 @@
+.container {
+  padding: 20px;
+  
+}
+
+.mat-form-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.mat-table {
+  width: 100%;
+  
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 20px;
+  text-align: justify;
+  justify-content: center;
+}
+
+.mat-header-row,
+.mat-row {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  
+}
+
+.mat-header-row {
+  font-weight: bold;
+}
+
+.mat-paginator {
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.mat-icon-button {
+  color: red;
+}
+.search{
+  display: flex;
+  justify-content: end;
+}

@@ -1,0 +1,42 @@
+<form [formGroup]="crudOperation" (ngSubmit)="onSubmit()" class="crud-form">
+  <div class="container">
+    <mat-form-field class="row-md-2" appearance="outline">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" type="number">
+      <mat-error *ngIf="crudOperation.get('id')?.hasError('required')">ID is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="row-md-2" appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" type="text" maxlength="15">
+      <mat-error *ngIf="crudOperation.get('title')?.hasError('required')">*Task Title is required</mat-error>
+      <mat-error *ngIf="crudOperation .get('title')?.hasError('pattern')">*Title should contain Alphabet</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="row-md-2" appearance="outline">
+      <mat-label>Body</mat-label>
+      <input matInput formControlName="body">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="date-field">
+      <input matInput [matDatepicker]="picker" formControlName="date" (dateChange)="ageCalculator()" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field class="row-md-2" appearance="outline">
+      <mat-label>Age</mat-label>
+      <input matInput formControlName="age" [value]="age" >
+    </mat-form-field>
+    
+    <mat-form-field class="row-md-2" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+      <mat-error *ngIf="crudOperation .get('email')?.hasError('required')">*Email Required</mat-error>
+      <mat-error *ngIf="crudOperation .get('email')?.hasError('pattern')">*Invalid Pattern</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="demo-button-container">
+    <button mat-raised-button type="submit">Submit</button>
+  </div>
+</form>

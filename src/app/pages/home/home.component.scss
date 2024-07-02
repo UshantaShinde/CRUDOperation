@@ -1,0 +1,31 @@
+.card {
+  width: 100%;
+  justify-items: center;
+  text-align: center;
+  flex-flow: row wrap;
+
+}
+.example-button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0%;
+  margin-left: 10%;
+  padding: 5%;
+  
+}
+.example-card {
+  width: 200px;
+  padding: 100px;
+  margin: 5%;
+  justify-items: center;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(7, 6, 6, 0.571);
+}
+
+.btn{
+    color: blue;
+}
+.h1{
+  display: inline;
+  
+}
