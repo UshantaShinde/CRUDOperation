@@ -25,32 +25,33 @@ export class AddTaskComponent implements OnInit {
   sort: any;
   http: any;
   inputvalue = "";
-  age:any;
-
-  date:any;
-
-
+  age: any;
+  date: any;
+   
+  formHeading: string; 
 
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _userService: UserDataServiceService) {
     this.formType = this._activatedRoute.snapshot.paramMap.get('id1');
+    this.formHeading = this.formType === 'edit' ? 'Edit Form' : 'Add Form';
+
     this.crudOperation = new FormGroup({
       id: new FormControl('', Validators.required),
       title: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-zA-Z]*"),
+        Validators.pattern("^[a-zA-Z ]+$"),
       ]),
       body: new FormControl(''),
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
-      ]),
-      date: new FormControl('', [
-        Validators.required
-      ]),
-      pancard: new FormControl('', [
-        Validators.pattern("/^([A-Z]){5}([0-9]){4}([A-Z]){1}$/")
-      ]),
-      age: new FormControl('')
+    //   email: new FormControl('', [
+    //     Validators.required,
+    //     Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
+    //   ]),
+    //   date: new FormControl('', [
+    //     Validators.required
+    //   ]),
+    //   pancard: new FormControl('', [
+    //     Validators.pattern("/^([A-Z]){5}([0-9]){4}([A-Z]){1}$/")
+    //   ]),
+    //   age: new FormControl('')
     });
 
   }
@@ -93,8 +94,8 @@ export class AddTaskComponent implements OnInit {
             console.log('New post added:', response);
             Swal.fire({
               icon: 'success',
-              title: 'Entry Edited',
-              text: 'The entry has been successfully edited.',
+              title: 'Entry Added',
+              text: 'The entry has been successfully Added.',
               allowOutsideClick: false
             });
             this._router.navigate(['/detail-view']);
@@ -131,11 +132,13 @@ export class AddTaskComponent implements OnInit {
 
   onSubmit() {
     if (this.formType == "add") {
+      
       this.addForm();
     } else if (this.formType == "edit") {
       this.updateForm();
       console.log("edit");
     }
+    this._router.navigate(['/detail-view']);
   }
 
   ageCalculator() {
@@ -146,7 +149,7 @@ export class AddTaskComponent implements OnInit {
       this.age = age;
     }
   }
-  }
+}
 
 
 
