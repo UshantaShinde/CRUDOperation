@@ -6,14 +6,12 @@
       <input matInput formControlName="id" type="number">
       <mat-error *ngIf="crudOperation.get('id')?.hasError('required')">ID is required</mat-error>
     </mat-form-field> -->
-
     <mat-form-field class="row-md-2" appearance="outline">
       <mat-label>Title</mat-label>
       <input matInput formControlName="title" type="text" maxlength="15">
       <mat-error *ngIf="crudOperation.get('title')?.hasError('required')">*Task Title is required</mat-error>
       <mat-error *ngIf="crudOperation .get('title')?.hasError('pattern')">*Title should contain Alphabet</mat-error>
     </mat-form-field>
-
     <mat-form-field class="row-md-2" appearance="outline">
       <mat-label>Body</mat-label>
       <input matInput formControlName="body">

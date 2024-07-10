@@ -1,53 +1,41 @@
 .container {
   padding: 20px;
-  
 }
-
 .mat-form-field {
   margin-bottom: 20px;
   width: 100%;
 }
-
 .table-container {
   margin-top: 20px;
 }
-
 .mat-table {
   width: 100%;
 }
-
 .mat-header-cell,
 .mat-cell {
   padding: 20px;
   text-align: justify;
   justify-content: center;
 }
-
 .mat-header-row,
 .mat-row {
   display: flex;
   border-bottom: 1px solid #ddd;  
 }
-
 .mat-header-row {
   font-weight: bold;
 }
-
 .mat-paginator {
   margin-top: 20px;
   justify-content: center;
 }
-
 .btn-group {
   display: flex;
   color:blue;
 }
-
 .mat-icon-button {
   background-color: transparent;
-
 }
-
 .search{
   display: flex;
   flex-wrap: wrap;
@@ -58,7 +46,6 @@ display:flex;
 font-size: larger;
 align-items: center;
 }
-
 .addbtn{
   margin: 60px;
   padding:0%;
@@ -68,7 +55,6 @@ align-items: center;
 .h1{
   display: inline;
 }
-
 .header-div{
   display: flex;
   justify-content: space-between;
@@ -79,8 +65,6 @@ align-items: center;
   flex-wrap: wrap;
   align-content: center;
 }
-
-
 .add-btn{
   height: 40%;
     width: 40%;

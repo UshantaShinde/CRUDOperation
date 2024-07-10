@@ -33,8 +33,7 @@ export class ListViewComponent implements OnInit {
   ngOnInit(): void {
     this.getMethod();
   }
- 
-
+//get post
   getMethod() {
     this._userService.getAllPost().subscribe((data) => {
       console.table(data);
@@ -43,15 +42,13 @@ export class ListViewComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
   }
-
+//delete Post
   deleteItem(id: any) {
-
     if (id > -1) {
-      let tempDatasource=this.dataSource.data;
-
-      tempDatasource.splice(id-1, 1);
-      this.dataSource.data=tempDatasource
-      this._userService.deletePost(id).subscribe((res:any) => {
+      let tempDatasource = this.dataSource.data;
+      tempDatasource.splice(id - 1, 1);
+      this.dataSource.data = tempDatasource
+      this._userService.deletePost(id).subscribe((res: any) => {
         console.log(res);
         Swal.fire({
           icon: 'success',
@@ -63,9 +60,6 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-
-
-
   editItem(): void {
     this._router.navigate(['/add-task', 'edit']);
   }
@@ -74,11 +68,8 @@ export class ListViewComponent implements OnInit {
     this._router.navigate(['/add-task', 'add']);
   }
 
-
-
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }

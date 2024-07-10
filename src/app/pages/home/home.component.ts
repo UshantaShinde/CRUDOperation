@@ -6,18 +6,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
   navigateToList() {
     this._router.navigate(['/list-view']);
   }
 
   navigateToDetail() {
-    this._router.navigate(['/detail-view']);  }
-  
-
-  constructor(private _router: Router) { }
-
-  ngOnInit(): void {
+    this._router.navigate(['/detail-view']);
   }
 
+  constructor(private _router: Router) { }
+  ngOnInit(): void {
+  }
 }

@@ -12,12 +12,10 @@ import { UserDataServiceService } from 'src/app/services/user-data-service.servi
   styleUrls: ['./detail-view.component.scss']
 })
 
-
 export class DetailViewComponent implements OnInit {
   filterValue = '';
   public getJsonValue: any;
   public postJsonValue: any;
- 
   displayedColumns: any = ['id',
     'title',
     'body',
@@ -25,43 +23,39 @@ export class DetailViewComponent implements OnInit {
   ];
   public dataSource: any = [];
   resultsLength: any;
-  @ViewChild(MatPaginator) paginator: MatPaginator |undefined;
-  @ViewChild(MatSort) sort: MatSort| undefined;
- 
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
 
   constructor(private _router: Router, private http: HttpClient,
-    private _userService:UserDataServiceService
+    private _userService: UserDataServiceService
   ) { }
 
+  //calling method
   ngOnInit(): void {
     this.getMethod();
-   
   }
-
+  //get post
   public getMethod() {
-    this._userService.getAllPost().subscribe((data:any) => {
-      this.resultsLength=data.length;
+    this._userService.getAllPost().subscribe((data: any) => {
+      this.resultsLength = data.length;
       this.dataSource = new MatTableDataSource<any>(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
   }
-
+//update Form
   updateForm(record: any): void {
     this._userService.passTask(record);
     this._router.navigate(['/add-task', 'edit']);
-}
-
-
-  
+  }
+//Search Logic
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-}
+  }
 
-navigateToAddTaskForm(): void {
-  this._router.navigate(['/add-task','add'])
-}
-
-
+  navigateToAddTaskForm(): void {
+    this._router.navigate(['/add-task', 'add'])
+  }
 }

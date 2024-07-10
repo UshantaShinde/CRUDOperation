@@ -6,19 +6,18 @@ import { Observable, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class UserDataServiceService {
-
   title: any;
   stauts: any;
-  private editRecord: any; 
+  private editRecord: any;
   apiUrl = "https://jsonplaceholder.typicode.com"
 
   constructor(private http: HttpClient) { }
 
-  passTask(record: any) { 
+  passTask(record: any) {
     this.editRecord = record;
   }
 
-  getEditRecord() { 
+  getEditRecord() {
     return this.editRecord;
   }
 
@@ -29,11 +28,11 @@ export class UserDataServiceService {
   getAllPost() {
     return this.http.get(`${this.apiUrl}/posts`);
   }
-
+//Delete Post
   deletePost(id: any) {
     return this.http.delete(`${this.apiUrl}/posts/${id}`);
   }
-
+//Add post
   addPost(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/posts`, data).pipe(
       catchError(error => {
@@ -42,9 +41,9 @@ export class UserDataServiceService {
       })
     );
   }
-
+//Update post
   updatePost(data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/posts/${data.id}`,data).pipe(
+    return this.http.put(`${this.apiUrl}/posts/${data.id}`, data).pipe(
       catchError(error => {
         console.error('Error adding post:', error);
         throw error;

@@ -15,7 +15,6 @@ import { MyDate } from './myDate';
 export class AddTaskComponent implements OnInit {
   crudOperation: FormGroup;
   formType: any;
-  private _userDataService: any;
   submitted: boolean = false;
   resultsLength: any;
   dataSource: any;
@@ -26,11 +25,13 @@ export class AddTaskComponent implements OnInit {
   age: any;
   date: any;
   formHeading: string; 
+  private _userDataService: any;
 
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _userService: UserDataServiceService) {
     this.formType = this._activatedRoute.snapshot.paramMap.get('id1');
     this.formHeading = this.formType === 'edit' ? 'Edit Form' : 'Add Form';
 
+    //Validations
     this.crudOperation = new FormGroup({
       id: new FormControl('', Validators.required),
       title: new FormControl('', [
@@ -78,7 +79,7 @@ export class AddTaskComponent implements OnInit {
     });
 
   }
-
+//Add post
   addForm() {
     if (this.crudOperation.valid) {
       this._userService.addPost(this.crudOperation.getRawValue()).subscribe(
@@ -100,10 +101,9 @@ export class AddTaskComponent implements OnInit {
       );
     }
   }
-
+//Update Post
   updateForm() {
     if (this.crudOperation.valid) {
-
       this._userService.updatePost(this.crudOperation.getRawValue()).subscribe(
         (response: any) => {
           console.log('Post updated:', response);
@@ -122,7 +122,6 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
-
   onSubmit() {
     if (this.formType == "add") {
       this.crudOperation.patchValue({
@@ -135,12 +134,12 @@ export class AddTaskComponent implements OnInit {
     }
     this._router.navigate(['/detail-view']);
   }
- 
+ //Auto Id generator
     private generateUniqueId(): number {
       return Math.floor(Math.random() * 1000); 
     }
-  
-
+    
+//Age Calculator
   ageCalculator() {
     if (this.crudOperation.value.date) {
       const dob = new Date(this.crudOperation.value.date);
