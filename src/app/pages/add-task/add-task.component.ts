@@ -27,8 +27,8 @@ export class AddTaskComponent implements OnInit {
   inputvalue = "";
   age: any;
   date: any;
-   
   formHeading: string; 
+
 
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _userService: UserDataServiceService) {
     this.formType = this._activatedRoute.snapshot.paramMap.get('id1');
@@ -56,10 +56,8 @@ export class AddTaskComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
     if (this.formType === 'edit') {
-
       const record = this._userService.getEditRecord();
       console.log('Record to edit:', record);
       if (record) {
@@ -132,7 +130,9 @@ export class AddTaskComponent implements OnInit {
 
   onSubmit() {
     if (this.formType == "add") {
-      
+      this.crudOperation.patchValue({
+        id: this.generateUniqueId() 
+      });
       this.addForm();
     } else if (this.formType == "edit") {
       this.updateForm();
@@ -140,6 +140,11 @@ export class AddTaskComponent implements OnInit {
     }
     this._router.navigate(['/detail-view']);
   }
+ 
+    private generateUniqueId(): number {
+      return Math.floor(Math.random() * 1000); 
+    }
+  
 
   ageCalculator() {
     if (this.crudOperation.value.date) {
