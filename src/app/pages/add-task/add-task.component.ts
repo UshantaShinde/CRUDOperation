@@ -7,8 +7,6 @@ import { UserDataServiceService } from 'src/app/services/user-data-service.servi
 import Swal from 'sweetalert2';
 import { MyDate } from './myDate';
 
-
-
 @Component({
   selector: 'app-task-form',
   templateUrl: './add-task.component.html',
@@ -28,7 +26,6 @@ export class AddTaskComponent implements OnInit {
   age: any;
   date: any;
   formHeading: string; 
-
 
   constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _userService: UserDataServiceService) {
     this.formType = this._activatedRoute.snapshot.paramMap.get('id1');
@@ -53,7 +50,6 @@ export class AddTaskComponent implements OnInit {
     //   ]),
     //   age: new FormControl('')
     });
-
   }
 
   ngOnInit(): void {
@@ -69,11 +65,10 @@ export class AddTaskComponent implements OnInit {
         this.crudOperation.controls['id'].disable();
       }
     }
-
     this.getMethod();
-
   }
 
+  // get All post
   getMethod() {
     this._userService.getAllPost().subscribe((data: any) => {
       this.resultsLength = data.length;
