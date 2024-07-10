@@ -12,9 +12,8 @@ const routes: Routes = [
   { path: 'list-view', component: ListViewComponent },
   { path: 'detail-view', component: DetailViewComponent },
   { path: 'add-task/:id1', component: AddTaskComponent },
-
+  
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
